@@ -82,11 +82,11 @@ createApp({
     methods: {
         verificarSesion() {
             this.hayUsuario = true;
-            fetch("http://127.0.0.1:5000/sesiones/obtener/" + this.codigoSesion)
+            fetch("https://emiliodevin2.pythonanywhere.com/sesiones/obtener/" + this.codigoSesion)
                 .then(respuesta => respuesta.json())
                 .then(datos => {
                     if(JSON.stringify(datos) != "{}") { 
-                        fetch("http://127.0.0.1:5000/usuarios/obtener/" + datos.usuario_id)
+                        fetch("https://emiliodevin2.pythonanywhere.com/usuarios/obtener/" + datos.usuario_id)
                             .then(respuesta => respuesta.json())
                             .then(datos => {
                                 this.nombre = datos.nombre;
@@ -99,7 +99,7 @@ createApp({
         },
         cerrar() {
             sessionStorage.setItem("codigoSesion", null);
-            fetch("http://127.0.0.1:5000/sesiones/cerrar/" + this.codigoSesion)
+            fetch("https://emiliodevin2.pythonanywhere.com/sesiones/cerrar/" + this.codigoSesion)
                 .then(respuesta => {
                     this.hayUsuario = false;
                     this.esAdministrador = false;

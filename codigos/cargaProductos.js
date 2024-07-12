@@ -14,7 +14,7 @@
 createApp({
     data() {
         return {
-            url: "http://127.0.0.1:5000",
+            url: "https://emiliodevin2.pythonanywhere.com",
             datos: []
         }
     },

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración</title>
+    <link rel="stylesheet" href="estilos/administracion.css">
+    <script
+    src="https://kit.fontawesome.com/435941fa36.js" >
+    crossorigin="anonymous"</script>
+  
+</head>
+<body>
+    <nav></nav>
+    <main>
+        <h1>Administración</h1>
+        <div id="app">
+            <section class="tabla">
+                <div class="tabla-encabezado">
+                    <div class="opciones">
+                        <h2 
+                            :class = "['titulo', rutaActiva.productos]"
+                            v-on:click = "establecerRuta('productos')"
+                        >
+                            Productos
+                        </h2>
+                        <h2 
+                            :class="['titulo', rutaActiva.usuarios]" 
+                            v-on:click="establecerRuta('usuarios')"
+                        >
+                            Usuarios
+                        </h2>
+                        <h2 
+                            :class="['titulo', rutaActiva.sesiones]" 
+                            v-on:click="establecerRuta('sesiones')"
+                        >
+                            Sesiones
+                        </h2>
+                    </div>
+                    <button class="agregar" v-on:click = "crear()"><i class="fa-solid fa-plus"></i>Nuevo</button>
+                </div>
+                <div class="tabla-cuerpo">
+                    <div class="tabla-busqueda">
+                        <select name="" id="">
+                            <option value="id">id</option>
+                            <option value="nombre">nombre</option>
+                            <option value="precio">precio</option>
+                        </select>
+                        <input type="text">
+                        <button><i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
+                    </div>
+                    <div class="tabla-listado">
+                        <template v-if = "cargando">
+                            ... owo ... 
+                        </template>
+                        <template v-else>
+                            <template v-if="rutaActiva.productos">
+                                <template v-for="producto in datos">
+                                    <div class="item"  v-if="!eliminados[producto.id]">
+                                        <div class="datos">
+                                            <span class="imagen">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
+                                            </span>
+                                            <div class="columna">
+                                                <div class="fila">
+                                                    <div class="datos-cortos">
+                                                        <span class="nombre"><strong>Nombre:</strong> {{producto.nombre}}</span>
+                                                        <span class="precio"><strong>Precio:</strong> {{producto.precio}}</span>
+                                                        <span class="inventario"><strong>Inventario:</strong> {{producto.inventario}}</span>
+                                                    </div>
+                                                    <div class="opciones">
+                                                        <button><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                                                        <button v-on:click = "eliminar(producto.id)"><i class="fa-solid fa-trash"></i>Eliminar</button>
+                                                    </div>
+                                                </div>
+                                                <span class="descripcion"><strong>Descripcion:</strong> {{producto.descripcion}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </template>
+                            <template v-if="rutaActiva.usuarios">
+                                <div class="item" v-for="usuario in datos">
+                                    <div class="datos">
+                                        <span class="imagen">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
+                                        </span>
+                                        <div class="columna">
+                                            <div class="fila">
+                                                <div class="datos-cortos">
+                                                    <span class="nombre"><strong>Nombre:</strong> {{usuario.nombre}}</span>
+                                                    <span class="clave"><strong>Clave:</strong> {{usuario.clave}}</span>
+                                                    <span class="esAdministrador"><strong>esAdministrador:</strong> {{usuario.esAdministrador}}</span>
+                                                </div>
+                                                <div class="opciones">
+                                                    <button><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                                                    <button><i class="fa-solid fa-trash"></i>Eliminar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+            </section>
+            <dialog open>
+                <div class="dialog-encabezado">
+                    <h3>Nuevo producto</h3>
+                    <button><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="dialog-cuerpo">
+
+                </div>
+            </dialog>
+        </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="module" src="./codigos/definicion.js"></script>
+        <script type="module" src="./codigos/main.js"></script>
+    </main>
+</body>
+</html>

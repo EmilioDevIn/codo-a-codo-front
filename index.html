@@ -1,117 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tienda de mascotas</title>
-        <link rel="stylesheet" href="estilos/style.css" />
-        <link rel="stylesheet" href="footer.css" />
-        <script src="https://kit.fontawesome.com/435941fa36.js">
-            crossorigin = "anonymous"</script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda de mascotas</title>
+    <link rel="stylesheet" href="./estilos/style.css" />
+    <link rel="stylesheet" href="./estilos/footer.css" />
+    <script src="https://kit.fontawesome.com/435941fa36.js">
+        crossorigin = "anonymous"</script>
 
-        <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
 
 
-    </head>
+</head>
 
-    <body>
-        <nav></nav>
-
-        <header>
-
-            <div class="hero contenedor-hero" id="hero">
-                <div class="text-hero">
-                    <h1 class="logo">
-                        <i class="fa-solid fa-paw fa-lg"></i> Peluditos Shop
-                    </h1>
-                    <h4 class="tienda">Tienda de Mascotas</h4> <!--se aplica animación-->
-
-                    <button id="botonIngresar" class="button btn-hero" type="submit" style="vertical-align: middle">
-                        <span>Ingresá</span>
-                    </button>
+<body>
+    <nav>
+        <div class="topnav" id="myTopnav">
+            <a class="logo"><i class="fa-solid fa-paw fa-sm pata-nav"></i>Peluditos Shop</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><i class="fa fa-bars"></i></a>
+            <a href="index.html">Home</a>
+            <a href="nosotros.html">Nosotros</a>
+            <div class="dropdown">
+                <button class="dropbtn">Productos
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="alimentos.html">Alimentos</a>
+                    <a href="accesorios.html">Accesorios</a>
                 </div>
             </div>
-            
-        </header>
-
-        <main>
-
-            <div class="caricaturas-container">
-                <img src="img/gato-perro.jpg" alt="Caricaturas perro y gato" />
-            </div>
-            
-            <div class="carousel contenedor-carousel" id="promos"><!--se aplica carousel-->
-                <img src="img/promo4.png" alt="Imagen 1" class="slide active" />
-                <img src="img/promo2.png" alt="Imagen 2" class="slide" />
-                <img src="img/promo3.jpg" alt="Imagen 3" class="slide" />
-            </div>
-
-            <div class="purina">
-                <img class="alimentos-purina" src="img/purinaAlimentos.png" alt="alimentos purina" />
-            </div>
-
-            <div class="ofertas">
-                <div class="ofer-sem">
-                    <h2>Ofertas de la semana</h2>
+            <div class="dropdown">
+                <button class="dropbtn">Servicios
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="banios.html">Baños</a>
+                    <a href="paseos.html">Paseos</a>
+                    <a href="peluqueria.html">Peluquería</a>
+                    <a href="veterinaria.html">Veterinaria</a>
                 </div>
-                <div id="container-ofertas" class="container-ofertas"></div>
-                <button class="button next-Btn" id="nextBtn" type="submit" style="vertical-align: middle">
-                    <span>Mostrar mas</span>
+            </div>
+            <div class="iconos-three">
+                <div>
+                    <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <div>
+                    <a href=""><i class="fa-solid fa-user"></i></a>
+                </div>
+                <div>
+                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <header>
+        <div class="hero contenedor-hero" id="hero">
+            <div class="text-hero">
+                <h1 class="logo">
+                    <i class="fa-solid fa-paw fa-lg"></i> Peluditos Shop
+                </h1>
+                <h4 class="tienda">Tienda de Mascotas</h4> <!--se aplica animación-->
+
+                <button id="botonIngresar" class="button btn-hero" type="submit" style="vertical-align: middle">
+                    <span>Ingresá</span>
                 </button>
             </div>
+        </div>
+    </header>
+    <main>
+        <div class="caricaturas-container">
+            <img src="img/gato-perro.jpg" alt="Caricaturas perro y gato" />
+        </div>
+        <div class="carousel contenedor-carousel" id="promos"><!--se aplica carousel-->
+            <img src="img/promo4.png" alt="Imagen 1" class="slide active" />
+            <img src="img/promo2.png" alt="Imagen 2" class="slide" />
+            <img src="img/promo3.jpg" alt="Imagen 3" class="slide" />
+        </div>
 
-            <div class="slider">
-                <div class="slider-inner">
-                    <img class="sl2"
-                        src="img/1-slide-1681769189096-3286831895-625656e88045fa0fd213b0ed33ab32e11681769191-1920-1920.png"
-                        alt="perro purina" />
-                    <img class="sl2"
-                        src="img/1-slide-1646836101245-4168302953-e37d4455762ce8a5c8bc8d7f0d0ba7021646836102-1920-1920.png"
-                        alt="promo" />
-                    <img class="sl2"
-                        src="img/1-slide-1627505124264-1055444766-c9962de05ddfc02297b9dc9620dcee6a1627505124-1920-1920.png"
-                        alt="promo2" />
+        <div class="purina">
+            <img class="alimentos-purina" src="img/purinaAlimentos.png" alt="alimentos purina" />
+        </div>
+
+        <div class="ofertas">
+            <div class="ofer-sem">
+                <h2>Ofertas de la semana</h2>
+            </div>
+            <div id="carrusel" class="container-ofertas"></div>
+            <button class="button next-Btn" id="nextBtn" type="submit" style="vertical-align: middle">
+                <span>Mostrar mas</span>
+            </button>
+        </div>
+
+        <div class="slider">
+            <div class="slider-inner">
+                <img class="sl2"
+                    src="img/1-slide-1681769189096-3286831895-625656e88045fa0fd213b0ed33ab32e11681769191-1920-1920.png"
+                    alt="perro purina" />
+                <img class="sl2"
+                    src="img/1-slide-1646836101245-4168302953-e37d4455762ce8a5c8bc8d7f0d0ba7021646836102-1920-1920.png"
+                    alt="promo" />
+                <img class="sl2"
+                    src="img/1-slide-1627505124264-1055444766-c9962de05ddfc02297b9dc9620dcee6a1627505124-1920-1920.png"
+                    alt="promo2" />
+            </div>
+        </div>
+        <div class="texto-registro">
+            <h3 class="text-h3">Recibí nuestras ofertas por email!!</h3>
+        </div>
+        <div class="registrate-middle"></div>
+        <div class="contenedorInput">
+            <div>
+                <label class="label">
+                    <input type="email" placeholder="" class="input" id="email" />
+                    <span class="label__name">Ingresá tu email</span>
+                </label>
+            </div>
+            <div>
+                <button id="botonEnviarMail" class="button-mail" type="submit" style="vertical-align: middle">
+                    <span>Enviar</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="animal-image">
+            <div>
+                <h2>Nuestros clientes</h2>
+            </div>
+            <div class="flexible">
+                <div id="app">
+                    <img v-bind:src="gato" />
+                    <img v-bind:src="perro" />
                 </div>
             </div>
+        </div>
+    </main>
 
-            <div class="texto-registro">
-                <h3 class="text-h3">Recibí nuestras ofertas por email!!</h3>
-            </div>
+    <footer id="footer"></footer>
 
-            <div class="registrate-middle"></div>
-
-            <div class="contenedorInput">
-                <div>
-                    <label class="label">
-                        <input type="email" placeholder="" class="input" id="email" />
-                        <span class="label__name">Ingresá tu email</span>
-                    </label>
-                </div>
-                <div>
-                    <button id="botonEnviarMail" class="button-mail" type="submit" style="vertical-align: middle">
-                        <span>Enviar</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="animal-image">
-                <div>
-                    <h2>Nuestros clientes</h2>
-                </div>
-                <div class="flexible">
-                    <div id="app">
-                        <img v-bind:src="gato" />
-                        <img v-bind:src="perro" />
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <footer id="footer"></footer>
-
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="script.js"></script>
-    </body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="codigos/_clases.js"></script>
+    <script src="codigos/cargaProductos.js"></script>
+    <script src="./codigos/definicion.js"></script>
+    <script src="./codigos/script.js"></script>
+</body>
 
 </html>

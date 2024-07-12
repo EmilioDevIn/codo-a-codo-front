@@ -90,20 +90,36 @@ function validarClave(clave) {
     return mensaje;
 }
 
-
-let validarIngreso = submit => () => {
-    let { value: nombre } = document.querySelector(".nombre-" + submit);
-    let { value: clave } = document.querySelector(".clave-" + submit);
-    return validarNombre(nombre) + validarClave(clave);
-}
-
 const validarRegistro = submit => () => {
     let { value: confirmacion } = document.querySelector(".confirmacion");
     let { value: clave } = document.querySelector(".clave-" + submit);
     return validarIngreso(submit)() + validarConfirmacion(confirmacion, clave);
 }
 
-const validar = submit => () => emitirError({ ingreso: validarIngreso(submit), registro: validarRegistro(submit)}[submit]);
+const validar = submit => () => emitirError(
+    { 
+        ingreso: validarIngreso(submit), 
+        registro: validarRegistro(submit)
+    } [submit]
+);
 
-submit.addEventListener("click", validar("ingreso"));
 submit2.addEventListener("click", validar("registro"))
+
+import { Aplicacion } from "./_clases";
+const { createApp } = Vue;
+const { api } = new Aplicacion();
+
+createApp({
+    data() {
+        return {
+            url: api.url,
+            nombre: "",
+            clave: ""
+        }
+    },
+    methods: {
+9    },
+    created() {
+
+    }
+})

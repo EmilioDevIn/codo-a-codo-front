@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    background: #f5f5f5;
+}
+
+div.formulario {
+    padding: 2em 8em;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+}
+
+div.formulario div.formulario-encabezado {
+    font-family: monospace;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0.4ch;
+}
+
+div.formulario div.formulario-encabezado h1 {
+    margin: 0;
+}
+
+div.formulario div.formulario-cuerpo {
+    display: flex;
+    gap: 1ch;
+}
+
+div.formulario div.formulario-cuerpo div.principal {
+    width: 160%;
+    background: #fff;
+    border-radius: 4px;
+    padding: 1ch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div.formulario div.formulario-cuerpo div.principal div.contenido {
+}
+
+div.formulario div.formulario-cuerpo div.principal div.contenido div.subtitulo {
+    border-bottom: 1px solid #222;
+    padding: 0.4ch 1ch;
+}
+
+div.formulario div.formulario-cuerpo div.principal div.contenido div.subtitulo h2 {
+    margin: 0;
+    font-family: monospace;
+}
+
+div.formulario div.formulario-cuerpo div.principal div.contenido div.campos {
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+    padding: 1ch 1ch;
+}
+
+div.formulario div.formulario-cuerpo div.principal div.contenido div.campos input,select {
+    padding: 0.4ch 2ch;
+    display: flex;
+    border: 1px solid #777;
+    border-radius: 4px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+div.formulario div.formulario-cuerpo div.principal div.acciones {
+    display: flex;
+    justify-content: end;
+    gap: 1ch;
+    padding: 0 1ch;
+}
+
+div.formulario div.formulario-cuerpo div.principal div.acciones button {
+    padding: 0.4ch 2ch;
+    font-family: monospace;
+    border: 1px solid #777;
+    border-radius: 4px;
+}
+
+div.formulario div.formulario-cuerpo div.lateral {
+    padding: 1ch;
+    gap: 1ch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 100%;
+}
+
+div.formulario div.formulario-cuerpo div.lateral div.campo-imagen input {
+    display: flex;
+    padding: 0.4ch 2ch;
+    border: 1px solid #777;
+    border-radius: 4px;
+}
+
+div.formulario div.formulario-cuerpo div.lateral div.imagen {
+    border: dashed 1px #777;
+    display: flex;
+    border-radius: 4px;
+}
+
+div.formulario div.formulario-cuerpo div.lateral div.imagen img {
+    border-radius: 4px;
+}

@@ -10,28 +10,43 @@
     5. alimeentos__gatos.html
 */
 
-import { ConfiguracionHTTP, Aplicacion } from "./_clases.js";
-const { crateApp } = Vue;
-const { estado, api } = new Aplicacion();
-
 // index.html
 createApp({
     data() {
         return {
-            url: api.url,
+            url: "http://127.0.0.1:5000",
             datos: []
         }
     },
     methods: {
         leer() {
+            alert(window.location.href)
             fetch(this.url + "/productos/leer")
                 .then(respuesta => respuesta.json())
-                .then(datos => this.datos = datos.filter((dato, i) => i < 8));
-            alert("work")
+                .then(datos => {
+                    this.datos = datos.filter((dato) => dato.inventario > 0);
+                    this.datos = this.datos.filter((dato, i) => i < 4)
+                });
+                    
         },
         reducirInventario(datos) {
-            fetch(this.url + "/productos/modificar", new ConfiguracionHTTP("POST", datos).json())
-                .then(respuesta => this.leer());
+            if(datos.inventario < 1) {
+                alert("Este producto ya no se puede comprar")
+            } else {
+                let tipo = sessionStorage.getItem("tipoUsuario");
+                if(tipo == "Cliente") {
+                    datos.inventario -= 1;
+                    fetch(this.url + "/productos/modificar/" + datos.id, {
+                        method: "PUT",
+                        body: JSON.stringify(datos),
+                        headers: { "Content-type": "application/json" },
+                    })
+                        .then(respuesta => this.leer());
+                }
+                else {
+                    alert("No estas autorizado a realizar esta operacion por se un usuario: " + tipo)
+                }
+            }
         }
     },
     created() {
@@ -40,6 +55,3 @@ createApp({
 }).mount("#carrusel")
 
 // paginas de productos
-createApp({
-
-}).mount("#productos")

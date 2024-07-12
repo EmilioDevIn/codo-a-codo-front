@@ -1,6 +1,7 @@
-import { AccionHTTP } from "./_clases.js";
+
 
 const { createApp } = Vue;
+
 
 createApp({
     data() {

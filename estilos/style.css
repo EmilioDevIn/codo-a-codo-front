@@ -167,7 +167,7 @@ nav {
 
 .topnav {
   overflow: hidden;
-  margin-left: 33.33%;
+  padding: 0 4em;
 }
 
 .topnav a {

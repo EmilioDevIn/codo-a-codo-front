@@ -79,14 +79,14 @@ class AccionHTTP {
     }
 
 }
-
+/* 
 class Estado {
 
     constructor() {
 
     }
 }
-
+ */
 class SesionUsuario {
 
     constructor(codigo = "", nombre = "Anonimo", esAdministrador = false) {
@@ -110,6 +110,10 @@ class ConfiguracionHTTP {
 
     json() {
         return JSON.parse(JSON.stringify(this));
+    }
+
+    static json() {
+
     }
 
 }

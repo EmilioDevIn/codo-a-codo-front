@@ -88,7 +88,29 @@
             <div class="ofer-sem">
                 <h2>Ofertas de la semana</h2>
             </div>
-            <div id="carrusel" class="container-ofertas"></div>
+            <div id="carrusel" style = "display: flex; gap: 2ch; justify-content: left;">
+                <div v-for="dato in datos" style="
+                    display: flex;
+                    border: 1px solid #222;
+                    flex-direction: column;
+                    width: 240px;
+                    height: 300px;
+                    border-radius: 8px;
+                    padding: 2ch;
+                    justify-content: end;
+                ">
+                    <img v-src="dato.imagen">
+                    <p>{{dato.nombre}}</p>
+                    <p>{{dato.descripcion}}</p>
+                    <p>${{dato.precio}}</p>
+                    <p>{{dato.inventario}}</p>
+                    <button v-on:click="reducirInventario(dato)" style="
+                        width: fit-content;
+                        padding: 0.2ch 2ch;
+                        align-self: end;
+                    ">Comprar</button>
+                </div>
+            </div>
             <button class="button next-Btn" id="nextBtn" type="submit" style="vertical-align: middle">
                 <span>Mostrar mas</span>
             </button>
@@ -140,11 +162,10 @@
 
     <footer id="footer"></footer>
 
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="codigos/_clases.js"></script>
+    <script src="codigos/navegacionYPie.js"></script>
     <script src="codigos/cargaProductos.js"></script>
-    <script src="./codigos/definicion.js"></script>
-    <script src="./codigos/script.js"></script>
 </body>
 
 </html>

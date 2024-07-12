@@ -1,14 +1,4 @@
-/*
-    FUNCION
-    - Cargar de forma dinamica los productos desde el BACKEND
 
-    PAGINAS
-    1. index.html
-    2. accesorios-perro.html
-    3. alimeentos__perros.html
-    4. accesorios-gatos.html
-    5. alimeentos__gatos.html
-*/
 
 // index.html
 createApp({

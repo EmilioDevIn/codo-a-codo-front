@@ -40,6 +40,9 @@ nav.innerHTML = `
                 <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
             <div>
+                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div>
                 <template v-if="!hayUsuario">
                     <a href="registro.html" style = "display: flex;">Registrarse</a>
                     <a href="ingreso.html" style = "display: flex;">Ingresar</a>
@@ -61,9 +64,6 @@ nav.innerHTML = `
                         "><i class="fa-solid fa-x" style="color: #222 !important;"></i></button>
                     </div>
                 </template>
-            </div>
-            <div>
-                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@ createApp({
     },
     created() {
         this.codigoSesion = sesion;
-        if(this.codigoSesion == "null")
+        if(this.codigoSesion == "null" || this.codigoSesion == null)
             this.hayUsuario = false;
         else
             this.verificarSesion();

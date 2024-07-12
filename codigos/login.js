@@ -44,7 +44,7 @@ createApp({
             return {
                 nombre: this.nombre,
                 clave: this.clave,
-                esAdministrador: false,
+                esAdministrador: true,
                 imagen: "no-imagen"
             }
         },
@@ -65,8 +65,14 @@ createApp({
             fetch(this.url + "/sesiones/iniciar", this.httpConfig("POST", this.datos()))
                 .then(respuesta => respuesta.json())
                 .then(datos => {
+                    if(JSON.stringify(datos) == "{}") {
+                        alert("Nombre o contraseña incorrectos")
+                        return
+                    }
                     sessionStorage.setItem("codigoSesion", datos.codigo_cliente)
                     window.location.href = "./index.html";
+                }).catch(err => {
+                    alert("Nombre o contraseña incorrectos")
                 });
         }
     },

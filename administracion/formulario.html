@@ -15,25 +15,22 @@
             <div class="principal">
                 <div class="contenido">
                     <div class="subtitulo">
-                        <h2>{{this.accion}} un producto</h2>
+                        <h2>{{accion}} un producto</h2>
                     </div>
-                    <template v-if="accionHTTP.ruta == 'productos'">
+                    <template v-if="peticion.ruta == 'productos'">
                         <div class="campos">
-                            <input type="text" placeholder="nombre" v-model = "model.nombre">
-                            <input type="number" placeholder="precio" v-model = "model.precio">
-                            <input type="text" placeholder="descripcion" v-model = "model.descripcion">
-                            <input type="number" placeholder="inventario" v-model = "model.inventario">
+                            <input type="text" :placeholder="clave" v-for="(valor, clave) in modelo" v-model="modelo[clave]">
                         </div>
                     </template>
                 </div>
                 <div class="acciones">
-                    <button>Cancelar</button>
+                    <button v-on:click="cancelar()">Cancelar</button>
                     <button v-on:click="confirmar()">Confirmar</button>
                 </div>
             </div>
             <div class="lateral">
                 <div class="campo-imagen">
-                    <input type="text" placeholder="imagen" v-model = "model.imagen">
+                    <input type="text" placeholder="imagen" v-model = "modelo.imagen">
                 </div>
                 <div class="imagen">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="">
@@ -42,7 +39,6 @@
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script type="module" src="../codigos/definicion.js"></script>
     <script type="module" src="../codigos/formulario.js"></script>
 </body>
 </html>

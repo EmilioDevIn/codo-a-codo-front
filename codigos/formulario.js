@@ -1,56 +1,101 @@
-import { AccionHTTP, Producto } from "./definicion.js";
 
 const { createApp } = Vue;
+
+function Producto() {
+    return {
+        id: 0,
+        nombre: "",
+        descripcion: "",
+        tipo_id: 0,
+        tipo: "",
+        precio: "",
+        inventario: "",
+        imagen: ""
+    }
+}
+
+function Usuario() {
+    return {
+        id: 0,
+        nombre: "",
+        clave: "",
+        esAdministrador: false,
+        imagen: "no-imagen",
+    }
+}
+
+function Sesion() {
+    return {
+        id: 0,
+        usuario_id: 0,
+        inicio_sesion: "",
+        cierre_sesion: "",
+        activo: true
+    }
+}
+
+function TipoProducto() {
+    return {
+        id: 0,
+        nombre: ""
+    }
+}
 
 createApp({
     data() {
         return {
-            url: "http://127.0.0.1:5000",
-            accionHTTP: null,
-            accion: null,
-            model: null,
-            activo: true
+            url: "https://emiliodevin2.pythonanywhere.com",
+            peticion: {},
+            presionado: false,
+            accion: "",
+            modelo: null,
         }
     },
     methods: {
         establecerAccion() {
-            if(this.accionHTTP.accion == "CREAR")
+            if(this.peticion.metodo == "POST")
                 this.accion = "Creando";
-            if(this.accionHTTP.accion == "EDITAR")
+            if(this.peticion.metodo == "PUT")
                 this.accion = "Editando";
         },
+        establecerTabla() {
+            this.modelo = { 
+                "productos": Producto, 
+                "usuarios": Usuario, 
+                "sesiones": Sesion, 
+                "tipos": TipoProducto 
+            }[this.peticion.ruta]();
+            if(this.peticion.carga)
+                for(let propiedad in this.modelo)
+                    this.modelo[propiedad] = this.peticion.carga[propiedad];
+        },
         generarCampos() {
-
+            
+        },
+        cancelar() {
+            window.location.href = "../administracion.html";
         },
         confirmar() {
-            if(this.activo) {
-                this.activo = false;
+            if(!this.presionado) {
+                this.presinado = true;
                 const options = {
+                    body: JSON.stringify(this.modelo),
                     method: 'POST',
-                    'body': JSON.stringify({
-                        nombre: this.model.nombre,
-                        precio: this.model.precio,
-                        descripcion: this.model.descripcion,
-                        inventario: this.model.inventario,
-                        imagen: this.model.imagen
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer tu_token_aqui',
-                        'X-Custom-Header': 'valor personalizado'
-                    }
+                    headers: { 'Content-Type': 'application/json' }
                 }
-                fetch(this.url + "/" + this.accionHTTP.ruta + "/crear", options)
+                fetch(this.url + "/" + this.peticion.ruta + "/crear", options)
                     .then(respuesta => {
+                        alert("esperando")
                         window.location.href = "../administracion.html";
                 })
             }
         }
     },
     created() {
-        this.accionHTTP = AccionHTTP.parse(sessionStorage.getItem("accionHTTP"));
-        console.log(this.accionHTTP);
-        this.model = new this.accionHTTP.plantilla()
+        this.peticion = JSON.parse(sessionStorage.getItem("peticion"));
         this.establecerAccion();
+        this.establecerTabla();
+        alert(JSON.stringify(this.peticion))
+
     }
 }).mount("#app");

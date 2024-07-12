@@ -6,7 +6,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            url: "http://127.0.0.1:5000",
+            url: "https://emiliodevin2.pythonanywhere.com",
             ruta: "productos",
             datos: [],
             cargando: false,
@@ -32,7 +32,6 @@ createApp({
         },
 
         lectura() {
-
             this.cargando = true;
             fetch(this.url + "/" + this.ruta + "/leer")
             .then(respuesta => {
@@ -45,14 +44,22 @@ createApp({
                     this.datos = datos;
                 })
         },
+        peticion(metodo, carga = "") {
+            return {
+                metodo: metodo,
+                ruta: this.ruta,
+                carga: ""
+            }
+        },
         crear() {
-            console.log("aqui")
-            const peticion = new Peticion(this.ruta + "/crear");
-            sessionStorage.setItem("peticion", peticion.stringify())
+            const peticion = this.peticion("POST");
+            sessionStorage.setItem("peticion", JSON.stringify(peticion));
             window.location.href = "./administracion/formulario.html";
         },
-        modificar(id, datos) {
-
+        modificar(datos) {
+            const peticion = this.peticion("PUT", datos);
+            sessionStorage(setItem("peticion", JSON.stringify(peticion)));
+            window.location.href = "./administracion/formulario.html";
         },
         eliminar(id) {
             const options = {
@@ -61,6 +68,7 @@ createApp({
             }
             fetch(this.url + "/" + this.ruta + "/eliminar/" + id, options)
                 .then(respuesta => {
+                    this.lectura();
                     this.eliminados[id] = "none";
                 })
         },

@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --color-primario: #eaeff3;
+  --color-secundario: #a20515;
+  --color-terciario: #0c0b0a;
+  --color-cuaternario: #ded9d9;
+  --color-quinario: #fc4b08;
+}
+
+.div0 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 200px;
+  background-color: var(--color-secundario);
+  height: auto;
+  padding: 10px 0;
+}
+.div1,
+.div7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-quinario);
+  color: var(--color-primario);
+  height: 50px;
+  border-bottom: 1.5px solid var(--color-primario);
+  border-top: 0.5px solid var(--color-primario);
+}
+.div2,
+.div3,
+.div4,
+.div5 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+}
+.div2,
+.div3,
+.div4,
+.div5,
+a {
+  color: black;
+  text-decoration: none;
+}
+.div2 a:hover,
+.div3 a:hover,
+.div4 a:hover,
+.div5 a:hover {
+  color: var(--color-primario);
+}
+
+.div6 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+}
+
+.seguinos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.forma-pago {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 890px) {
+  .div0 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .div1,
+  .div2,
+  .div3,
+  .div4,
+  .div5,
+  .div6 {
+    justify-content: center;
+    align-items: center;
+  }
+  .seguinos {
+    justify-content: center;
+    align-items: center;
+  }
+  .forma-pago {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .div7,
+  p {
+    font-size: 0.5em;
+  }
+}

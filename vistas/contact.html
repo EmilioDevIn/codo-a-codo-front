@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>contacto</title>
+    <script
+      src="https://kit.fontawesome.com/435941fa36.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="contacto.css" />
+  </head>
+  <body>
+    <nav></nav>
+
+    <main>
+      <div class="servicios-varios">
+        <div class="img-container">
+          <img
+            src="img/serviciosTotales.png"
+            alt="publicidad servicios para mascotas"
+          />
+        </div>
+      </div>
+
+      <h1>Contactanos</h1>
+      <form id="registrationForm">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" />
+        </div>
+        <div>
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+        </div>
+        <div>
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" />
+        </div>
+        <div>
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" />
+        </div>
+
+        <div>
+          <label for="preferencias">Motivo de consulta:</label>
+          <select id="preferencias" name="preferencias">
+            <option value="">Seleccione una opción</option>
+            <option value="opcion1">Accesorios</option>
+            <option value="opcion2">Alimentos</option>
+            <option value="opcion3">Baños</option>
+            <option value="opcion1">Paseos</option>
+            <option value="opcion2">Peluquería</option>
+            <option value="opcion3">Veterinaria</option>
+          </select>
+        </div>
+        <div></div>
+        <div>
+          <label for="consulta">Consulta:</label>
+          <textarea id="consulta" name="consulta" rows="4" cols="50"></textarea>
+        </div>
+        <label for="terminos">
+          <input
+            type="checkbox"
+            id="terminos"
+            name="terminos"
+            class="tyc"
+          />Acepto los términos y condiciones
+        </label>
+        <button type="submit" class="btn-enviar-formulario">Enviar</button>
+      </form>
+    </main>
+
+    <footer></footer>
+    <script src="script.js"></script>
+    <script src="contacto.js"></script>
+  </body>
+</html>

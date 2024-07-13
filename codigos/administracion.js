@@ -43,7 +43,6 @@ createApp({
                     
                     if(this.ruta == "productos") {
                         this.datos = this.datos.reverse();        
-                        alert(JSON.stringify(this.datos))
                     }
                 })
         },

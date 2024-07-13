@@ -78,7 +78,7 @@ createApp({
                 .then(respuesta => respuesta.json())
                 .then(datos => {                    
                     this.datos = datos.filter((dato) => dato.inventario > 0);
-                    this.datos = datos.filter((dato) => dato.tipo_id == this.tipo);
+                    this.datos = this.datos.filter((dato) => dato.tipo_id == this.tipo);
                     this.datos.map((elemento, indice) => {
                         if((indice) % 4 == 0) {
                             this.contador++;
@@ -120,7 +120,5 @@ createApp({
 
         this.establecerTipoId();
         this.leer();
-        
-       
     }
 }).mount("#productos")

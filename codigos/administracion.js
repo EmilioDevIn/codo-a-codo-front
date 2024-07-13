@@ -40,8 +40,10 @@ createApp({
                 .then(datos => {
                     this.cargando = false;
                     
-                    datos.map(dato => this.eliminados[dato.id] = "flex");
                     this.datos = datos;
+
+                    if(this.peticion.ruta == "productos")
+                        this.datos = this.reverse();        
                 })
         },
         peticion(metodo, carga = "") {
@@ -79,6 +81,12 @@ createApp({
         }
     },
     created() {
+        let mensajePendiente = sessionStorage.getItem("mensajePendiente");
+        if(mensajePendiente && mensajePendiente != "null") {
+            alert(mensajePendiente);
+            sessionStorage.setItem("mensajePendiente", null);
+        }
+
         let tipoUsuario = sessionStorage.getItem("tipoUsuario");
         if(tipoUsuario != "Administrador")
             window.location.href = "../index.html";

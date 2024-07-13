@@ -107,6 +107,8 @@ createApp({
                 headers: { 'Content-Type': 'application/json' }
             }
 
+            sessionStorage.setItem("mensajePendiente", `Se ${{"POST":"creo", "PUT": "edito"}[this.peticion.metodo]} un ${this.seleccion}: ${this.modelo.nombre}`);
+
             if(this.peticion.metodo == "POST")
                 fetch(this.url + "/" + this.peticion.ruta + "/crear", options)
                     .then(respuesta => { window.location.href = "../administracion.html"; });

@@ -5,7 +5,7 @@ const { createApp } = Vue;
 let sesion = sessionStorage.getItem("codigoSesion");
 
 nav.innerHTML = `  
-    <div class="topnav" id="myTopnav" style="display: flex; justify-content: space-between;">
+    <div class="topnav" id="myTopnav" style="display: flex; justify-content: space-between; margin: 0;">
         <div>
             <a class="logo"><i class="fa-solid fa-paw fa-sm pata-nav"></i>Peluditos Shop</a>
             <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><i class="fa fa-bars"></i></a>
@@ -39,9 +39,11 @@ nav.innerHTML = `
             <div>
                 <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
-            <div>
-                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
+            <template v-if="hayUsuario">
+                <div>
+                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </template>
             <div>
                 <template v-if="!hayUsuario">
                     <a href="../registro.html" style = "display: flex;">Registrarse</a>
@@ -105,6 +107,7 @@ createApp({
                     this.esAdministrador = false;
                     this.codigoSesion = null;
                     sessionStorage.setItem("tipoUsuario", "Anonimo");
+                    window.location.href = "../index.html";
                 })
         }
     },

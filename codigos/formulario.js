@@ -6,7 +6,7 @@ function Producto() {
         id: 0,
         nombre: "",
         descripcion: "",
-        tipoId: 0,
+        tipo_id: 0,
         tipo: "",
         precio: "",
         inventario: "",
@@ -50,7 +50,8 @@ createApp({
             accion: "",
             modelo: null,
             seleccion: "",
-            a: "un"
+            a: "un",
+            tiposParaProducto: []
         }
     },
     methods: {
@@ -60,6 +61,11 @@ createApp({
             if(this.peticion.metodo == "PUT")
                 this.accion = "Editando";
         },
+        casoTipoEnProducto() {
+            fetch(this.url + "/tipos/leer")
+                .then(respuesta => respuesta.json())
+                .then(datos => this.tiposParaProducto = datos)
+        },
         establecerTabla() {
             this.modelo = { 
                 "productos": Producto, 
@@ -67,6 +73,10 @@ createApp({
                 "sesiones": Sesion, 
                 "tipos": TipoProducto 
             }[this.peticion.ruta]();
+
+            if(this.peticion.ruta == "productos")
+                this.casoTipoEnProducto();
+
             if(this.peticion.carga)
                 for(let propiedad in this.modelo)
                     this.modelo[propiedad] = this.peticion.carga[propiedad];
@@ -88,29 +98,22 @@ createApp({
             window.location.href = "../administracion.html";
         },
         confirmar() {
-            if(this.peticion.metodo == "POST") {
-                const options = {
-                    body: JSON.stringify(this.modelo),
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' }
-                }
-                fetch(this.url + "/" + this.peticion.ruta + "/crear", options)
-                    .then(respuesta => {
-                        window.location.href = "../administracion.html";
-                })
+            if(this.modelo.esAdministrador)
+                this.modelo.esAdministrador = new Boolean(this.modelo.esAdministrador);
+
+            const options = {
+                body: JSON.stringify(this.modelo),
+                method: this.peticion.metodo,
+                headers: { 'Content-Type': 'application/json' }
             }
 
-            if(this.peticion.metodo == "PUT") {
-                const options = {
-                    body: JSON.stringify(this.modelo),
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' }
-                }
+            if(this.peticion.metodo == "POST")
+                fetch(this.url + "/" + this.peticion.ruta + "/crear", options)
+                    .then(respuesta => { window.location.href = "../administracion.html"; });
+
+            if(this.peticion.metodo == "PUT")
                 fetch(this.url + "/" + this.peticion.ruta + "/modificar/" + this.modelo.id, options)
-                    .then(respuesta => {
-                        window.location.href = "../administracion.html";
-                })
-            }
+                    .then(respuesta => { window.location.href = "../administracion.html"; });
         }
     },
     created() {

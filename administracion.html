@@ -14,7 +14,7 @@
     <nav></nav>
     <main>
         <h1>Administración</h1>
-        <div id="app">
+        <div id="app" style="margin: 2ch 0;">
             <section class="tabla">
                 <div class="tabla-encabezado">
                     <div class="opciones">
@@ -58,8 +58,20 @@
                                 <template v-for="producto in datos">
                                     <div class="item">
                                         <div class="datos">
-                                            <span class="imagen">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
+                                            <span class="imagen" style="
+                                                background: #222;
+                                                border-radius: 4px;
+                                            ">
+                                                <template v-if="producto.imagen">
+                                                    <img :src="producto.imagen" alt="#">
+                                                </template>
+                                                <template v-else>
+                                                    <div style="
+                                                        width: 80px;
+                                                        height: 80px;
+                                                        border-radius: 4px;
+                                                    "></div>
+                                                </template>
                                             </span>
                                             <div class="columna">
                                                 <div class="fila">
@@ -67,6 +79,7 @@
                                                         <span class="nombre"><strong>Nombre:</strong> {{producto.nombre}}</span>
                                                         <span class="precio"><strong>Precio:</strong> {{producto.precio}}</span>
                                                         <span class="inventario"><strong>Inventario:</strong> {{producto.inventario}}</span>
+                                                        <span class="inventario"><strong>Tipo:</strong> {{producto.tipo}}</span>
                                                     </div>
                                                     <div class="opciones">
                                                         <button v-on:click="modificar(producto)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
@@ -80,17 +93,21 @@
                                 </template>
                             </template>
                             <template v-if="rutaActiva.usuarios">
-                                <div class="item" v-for="usuario in datos">
+                                <div class="item usuarios" v-for="usuario in datos">
                                     <div class="datos">
-                                        <span class="imagen">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
-                                        </span>
                                         <div class="columna">
                                             <div class="fila">
                                                 <div class="datos-cortos">
+                                                    <span class="esAdministrador">
+                                                        <template v-if="usuario.esAdministrador">
+                                                            <span class="administrador">Administrador</span>
+                                                        </template>
+                                                        <template v-else>
+                                                            <span class="cliente">Cliente</span>
+                                                        </template>
+                                                    </span>
                                                     <span class="nombre"><strong>Nombre:</strong> {{usuario.nombre}}</span>
                                                     <span class="clave"><strong>Clave:</strong> {{usuario.clave}}</span>
-                                                    <span class="esAdministrador"><strong>esAdministrador:</strong> {{usuario.esAdministrador}}</span>
                                                 </div>
                                                 <div class="opciones">
                                                     <button v-on:click="modificar(usuario)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
@@ -102,16 +119,13 @@
                                 </div>
                             </template>
                             <template v-if="rutaActiva.tipos">
-                                <div class="item" v-for="tipo in datos">
+                                <div class="item tipos" v-for="tipo in datos">
                                     <div class="datos">
-                                        <span class="imagen">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
-                                        </span>
                                         <div class="columna">
                                             <div class="fila">
                                                 <div class="datos-cortos">
-                                                    <span class="nombre"><strong>Nombre:</strong> {{tipo.nombre}}</span>
-                                                    <span class="clave"><strong>Id:</strong> {{tipo.id}}</span>
+                                                    <span class="clave"><strong>id: </strong> {{tipo.id}}</span>
+                                                    <span class="nombre"><strong>nombre: </strong> {{tipo.nombre}}</span>
                                                 </div>
                                                 <div class="opciones">
                                                     <button v-on:click="modificar(tipo)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>

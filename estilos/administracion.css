@@ -182,7 +182,34 @@ div.tabla-cuerpo div.tabla-listado div.item span.imagen img {
     height: 80px;
     border-radius: 4px;
     width: 80px;
+
 }
+
+div.tabla-cuerpo div.tabla-listado div.item.tipos div.fila div.datos-cortos {
+    align-items: center;
+}
+
+div.tabla-cuerpo div.tabla-listado div.item.usuarios div.fila div.datos-cortos {
+    align-items: center;
+}
+
+div.tabla-cuerpo div.tabla-listado div.item.usuarios div.fila div.datos-cortos span.esAdministrador span {
+    border: 1px solid #777;
+    width: 15ch;
+    display: block;
+    border-radius: 4px;
+    font-family: monospace;
+    padding: 0.4ch 1ch;
+
+    &.cliente {
+        background-color: #efe;
+    }
+    
+    &.administrador {
+        background-color: #def;
+    }
+}
+
 
 dialog {
     display: none;

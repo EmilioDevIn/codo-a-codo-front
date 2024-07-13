@@ -21,7 +21,24 @@
                     </div>
                     <template v-if="peticion.ruta">
                         <div class="campos">
-                            <input type="text" :placeholder="clave" v-for="(valor, clave) in modelo" v-model="modelo[clave]">
+                            <template v-for="(valor, clave) in modelo">
+                                <template v-if="!['id', 'tipo', 'tipo_id', 'imagen', 'esAdministrador'].includes(clave)">
+                                    <input type="text" :placeholder="clave"  v-model="modelo[clave]">
+                                </template>
+                                <template v-else>
+                                    <template v-if="clave == 'tipo_id'">
+                                        <select v-model="modelo.tipo_id">
+                                            <option v-for="opcion in tiposParaProducto" :key="opcion.id" :value="opcion.id">{{opcion.nombre}}</option>
+                                        </select>
+                                    </template>
+                                    <template v-if="clave == 'esAdministrador'">
+                                        <label for="">
+                                            <input type="checkbox" v-model="modelo[clave]">
+                                            Administrador
+                                        </label>
+                                    </template>
+                                </template>
+                            </template>
                         </div>
                     </template>
                 </div>
@@ -31,12 +48,15 @@
                 </div>
             </div>
             <div class="lateral">
-                <div class="campo-imagen">
-                    <input type="text" placeholder="imagen" v-model = "modelo.imagen">
-                </div>
-                <div class="imagen">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="">
-                </div>
+                <template v-if="Object.hasOwn(modelo, 'imagen') && peticion.ruta != 'usuarios'">
+                    <div class="campo-imagen">
+                            <input type="text" placeholder="imagen" v-model = "modelo.imagen">
+                        </div>
+                    </div>
+                    <div class="imagen">
+                        <img :src="modelo.imagen" alt="">
+                    </div>
+                </template>
             </div>
         </div>
     </div>

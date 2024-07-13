@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    background: #f5f5f5;
 }
 
 div.formulario {
@@ -16,7 +15,7 @@ div.formulario div.formulario-encabezado {
     font-family: monospace;
     background: #fff;
     border-radius: 4px;
-    padding: 0.4ch;
+    font-size: 1.2em;
 }
 
 div.formulario div.formulario-encabezado h1 {
@@ -48,6 +47,7 @@ div.formulario div.formulario-cuerpo div.principal div.contenido div.subtitulo {
 
 div.formulario div.formulario-cuerpo div.principal div.contenido div.subtitulo h2 {
     margin: 0;
+    font-size: 1.8em;
     font-family: monospace;
 }
 
@@ -63,7 +63,7 @@ div.formulario div.formulario-cuerpo div.principal div.contenido div.campos inpu
     display: flex;
     border: 1px solid #777;
     border-radius: 4px;
-
+    font-size: 0.92em;
 
     &:focus {
         outline: none;
@@ -75,7 +75,7 @@ div.formulario div.formulario-cuerpo div.principal div.acciones {
     justify-content: end;
     gap: 1ch;
     padding: 0 1ch;
-    font-size: 1.12em;
+    font-size: 1.2em;
 }
 
 div.formulario div.formulario-cuerpo div.principal div.acciones button {
@@ -86,7 +86,7 @@ div.formulario div.formulario-cuerpo div.principal div.acciones button {
 }
 
 div.formulario div.formulario-cuerpo div.lateral {
-    padding: 1ch;
+    padding: 1ch 2ch;
     gap: 1ch;
     display: flex;
     flex-direction: column;
@@ -96,20 +96,42 @@ div.formulario div.formulario-cuerpo div.lateral {
     width: 100%;
 }
 
-div.formulario div.formulario-cuerpo div.lateral div.campo-imagen input {
+div.formulario div.formulario-cuerpo div.lateral div.campo-imagen {
     display: flex;
+    width: 100%;
+}
+
+div.formulario div.formulario-cuerpo div.lateral div.campo-imagen input {
     padding: 0.6ch 2ch;
     border: 1px solid #777;
+    width: 100%;
     border-radius: 4px;
-    font-size: 1.12em;
+    font-size: 0.92em;
 }
 
 div.formulario div.formulario-cuerpo div.lateral div.imagen {
     border: dashed 1px #777;
     display: flex;
     border-radius: 4px;
+    
 }
 
 div.formulario div.formulario-cuerpo div.lateral div.imagen img {
     border-radius: 4px;
+    max-width: 360px;
+    max-height: 360px;
+}
+
+div.formulario div.formulario-cuerpo label {
+    border: 1px solid #777;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 0.92em;
+    padding: 0.32ch 1ch;
+
+    & input[type="checkbox"] {
+        transform: scale(1.2);
+        margin: 0 1ch;
+    }
 }

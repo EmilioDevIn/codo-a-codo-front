@@ -9,14 +9,14 @@ nav.innerHTML = `
         <div>
             <a class="logo"><i class="fa-solid fa-paw fa-sm pata-nav"></i>Peluditos Shop</a>
             <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><i class="fa fa-bars"></i></a>
-            <a href="index.html">Home</a>
-            <a href="nosotros.html">Nosotros</a>
+            <a href="../index.html">Home</a>
+            <a href="../nosotros.html">Nosotros</a>
             <div class="dropdown">
                 <button class="dropbtn">Productos
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="../productos/alimentos.html">Alimentos a</a>
+                    <a href="../productos/alimentos.html">Alimentos</a>
                     <a href="../productos/accesorios.html">Accesorios</a>
                 </div>
             </div>
@@ -25,14 +25,14 @@ nav.innerHTML = `
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="banios.html">Baños</a>
-                    <a href="paseos.html">Paseos</a>
-                    <a href="peluqueria.html">Peluquería</a>
-                    <a href="veterinaria.html">Veterinaria</a>
+                    <a href="../banios.html">Baños</a>
+                    <a href="../paseos.html">Paseos</a>
+                    <a href="../peluqueria.html">Peluquería</a>
+                    <a href="../veterinaria.html">Veterinaria</a>
                 </div>
             </div>
             <template v-if="esAdministrador">
-                <a href="administracion.html">Administracion</a>
+                <a href="../administracion.html">Administracion</a>
             </template>
         </div>
         <div class="iconos-three">
@@ -44,8 +44,8 @@ nav.innerHTML = `
             </div>
             <div>
                 <template v-if="!hayUsuario">
-                    <a href="registro.html" style = "display: flex;">Registrarse</a>
-                    <a href="ingreso.html" style = "display: flex;">Ingresar</a>
+                    <a href="../registro.html" style = "display: flex;">Registrarse</a>
+                    <a href="../ingreso.html" style = "display: flex;">Ingresar</a>
                 </template>
                 <template v-if="hayUsuario">
                     <div style = "color: white; display: flex;">
@@ -160,22 +160,22 @@ footer.innerHTML = `
             <div class="seguinos">
                 <h4>Seguinos</h4>
                 <div>
-                <a href=""><i class="facebook"><img src="img/icons8-facebook-rodeado-de-círculo-32.png" alt="facebook"></i></a>
-                <a href=""><i class="instagram"><img src="img/icons8-instagram-32.png" alt="instagram"></i></a>
-                <a href=""><i class="twitter"><img src="img/icons8-logo-de-twitter-32.png" alt="twitter"></i></a>
-                <a href=""><i class="whatsapp"><img src="img/icons8-whatsapp-32.png" alt="whatsapp"></i></a>
+                <a href=""><i class="facebook"><img src="../img/icons8-facebook-rodeado-de-círculo-32.png" alt="facebook"></i></a>
+                <a href=""><i class="instagram"><img src="../img/icons8-instagram-32.png" alt="instagram"></i></a>
+                <a href=""><i class="twitter"><img src="../img/icons8-logo-de-twitter-32.png" alt="twitter"></i></a>
+                <a href=""><i class="whatsapp"><img src="../img/icons8-whatsapp-32.png" alt="whatsapp"></i></a>
                 </div>
             </div>
              
             <div class="forma-pago">
                 <h4>Formas de pago</h4>
                 <div>
-                <i class="visa"><img src="img/icons8-visa-32.png" alt="tarjeta visa"></i>
-                <i class="mastercard"><img src="img/icons8-tarjeta-mastercard-32.png" alt="tarjeta mastercard"></i>
-                <i class="amex"><img src="img/icons8-amex-32.png" alt="amex"></i>
-                <i class="mercadopago"><img src="img/icons8-mercado-pago-32.png" alt="mercadopago"></i>
-                <i class="maestro"><img src="img/icons8-maestro-32 (1).png" alt="maestro"></i>
-                <i class="discover"><img src="img/icons8-discover-32.png" alt="discover"></i>
+                <i class="visa"><img src="../img/icons8-visa-32.png" alt="tarjeta visa"></i>
+                <i class="mastercard"><img src="../img/icons8-tarjeta-mastercard-32.png" alt="tarjeta mastercard"></i>
+                <i class="amex"><img src="../img/icons8-amex-32.png" alt="amex"></i>
+                <i class="mercadopago"><img src="../img/icons8-mercado-pago-32.png" alt="mercadopago"></i>
+                <i class="maestro"><img src="../img/icons8-maestro-32 (1).png" alt="maestro"></i>
+                <i class="discover"><img src="../img/icons8-discover-32.png" alt="discover"></i>
                 <p class="efectivo-transf">Efectivo - Transferencia bancaria</p>
                 </div>
             </div>

@@ -21,10 +21,20 @@
     <nav></nav>
     <h1>Alimento Para Gatos</h1>
     <main>
-      <div id="contenido-alimento-gato" class="contenido-alimento-gato"></div>
-    </main>
+      <div id="productos">
+        <div class="fila" v-for="fila in filas">
+          <div class="tarjeta" v-for="producto in fila">
+              <img :src="producto.imagen" alt="${producto.nombre}" style="max-height: 180px">
+              <h3>{{producto.nombre}}</h3>
+              <p>{{producto.precio}}</p>
+              <p>{{producto.descripcion}}</p>
+              <p>{{producto.inventario}}</p>
+              <button v-on:click="reducirInventario(producto)">Comprar</button>
+          </div>
+        </div>    </main>
     <footer></footer>
-    <script src="../codigos/script.js"></script>
-    <script src="../codigos/alimentos.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../codigos/navegacionYPie.js"></script>
+    <script src="../codigos/cargaProductos.js"></script>
   </body>
 </html>

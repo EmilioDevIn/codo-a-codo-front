@@ -20,6 +20,7 @@ createApp({
     },
     methods: {
         establecerRutaActiva(ruta) {
+            sessionStorage.setItem("ultimaRuta", ruta);
             this.rutaActiva.productos = "";
             this.rutaActiva.usuarios = "";
             this.rutaActiva.tipos = "";
@@ -30,7 +31,6 @@ createApp({
             this.ruta = ruta;
             this.lectura()
         },
-
         lectura() {
             this.cargando = true;
             fetch(this.url + "/" + this.ruta + "/leer")
@@ -72,13 +72,21 @@ createApp({
                     return respuesta.json()
                 })
                 .then(datos => alert({
-                    productos: "producto",
-                    usuarios: "usuario",
-                    tipos: "tipo de producto"
+                    productos: "Producto",
+                    usuarios: "Usuario",
+                    tipos: "Tipo de producto"
                 } [this.ruta] + " eliminado: " + datos.nombre))
-        },
+        }
     },
     created() {
+        let tipoUsuario = sessionStorage.getItem("tipoUsuario");
+        if(tipoUsuario != "Administrador")
+            window.location.href = "../index.html";
+
+        let rutaGuardada = sessionStorage.getItem("ultimaRuta");
+        if(rutaGuardada)
+            this.establecerRuta(rutaGuardada)
+        
         this.lectura()
     },
 }).mount("#app");

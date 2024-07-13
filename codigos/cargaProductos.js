@@ -75,7 +75,6 @@ createApp({
             fetch(this.url + "/productos/leer")
                 .then(respuesta => respuesta.json())
                 .then(datos => {
-                    alert(JSON.stringify(datos))
                     this.datos = datos.filter((dato) => dato.tipo_id == this.tipo);
                     this.datos.map((elemento, indice) => {
                         if((indice) % 4 == 0) {
@@ -115,6 +114,9 @@ createApp({
     created() {
         let composicionUrl = window.location.href.split("/");
         this.pagina = composicionUrl[composicionUrl.length - 1];
+
+        console.log(this.pagina);
+        alert("gadagadigadagadao");
 
         this.establecerTipoId();
         this.leer();

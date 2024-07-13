@@ -115,10 +115,10 @@ createApp({
         let composicionUrl = window.location.href.split("/");
         this.pagina = composicionUrl[composicionUrl.length - 1];
 
-        console.log(this.pagina);
-        alert("gadagadigadagadao");
-
         this.establecerTipoId();
         this.leer();
+        
+        console.log(this);
+        alert("revision");
     }
 }).mount("#productos")

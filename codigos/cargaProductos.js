@@ -5,12 +5,12 @@ createApp({
     data() {
         return {
             url: "https://emiliodevin2.pythonanywhere.com",
-            datos: []
+            datos: [],
+            desactivado: false
         }
     },
     methods: {
         leer() {
-            alert(window.location.href)
             fetch(this.url + "/productos/leer")
                 .then(respuesta => respuesta.json())
                 .then(datos => {
@@ -25,13 +25,17 @@ createApp({
             } else {
                 let tipo = sessionStorage.getItem("tipoUsuario");
                 if(tipo == "Cliente") {
+                    this.desativado = true;
                     datos.inventario -= 1;
                     fetch(this.url + "/productos/modificar/" + datos.id, {
                         method: "PUT",
                         body: JSON.stringify(datos),
                         headers: { "Content-type": "application/json" },
                     })
-                        .then(respuesta => this.leer());
+                        .then(respuesta => {
+                            this.desactivado = false;
+                            this.leer();
+                        });
                 }
                 else {
                     alert("No estas autorizado a realizar esta operacion por se un usuario: " + tipo)

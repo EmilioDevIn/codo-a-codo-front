@@ -6,7 +6,7 @@ function Producto() {
         id: 0,
         nombre: "",
         descripcion: "",
-        tipo_id: 0,
+        tipoId: 0,
         tipo: "",
         precio: "",
         inventario: "",
@@ -49,6 +49,8 @@ createApp({
             presionado: false,
             accion: "",
             modelo: null,
+            seleccion: "",
+            a: "un"
         }
     },
     methods: {
@@ -69,6 +71,16 @@ createApp({
                 for(let propiedad in this.modelo)
                     this.modelo[propiedad] = this.peticion.carga[propiedad];
         },
+        establecerSeleccion() {
+            this.seleccion = {
+                productos: "producto",
+                usuarios: "usuario",
+                tipos: "tipo de producto"
+            } [this.peticion.ruta];
+            if(this.seleccion == "sesion")
+                this.a = "una";
+            else this.a = "un";
+        },
         generarCampos() {
             
         },
@@ -76,8 +88,7 @@ createApp({
             window.location.href = "../administracion.html";
         },
         confirmar() {
-            if(!this.presionado) {
-                this.presinado = true;
+            if(this.peticion.metodo == "POST") {
                 const options = {
                     body: JSON.stringify(this.modelo),
                     method: 'POST',
@@ -85,7 +96,18 @@ createApp({
                 }
                 fetch(this.url + "/" + this.peticion.ruta + "/crear", options)
                     .then(respuesta => {
-                        alert("esperando")
+                        window.location.href = "../administracion.html";
+                })
+            }
+
+            if(this.peticion.metodo == "PUT") {
+                const options = {
+                    body: JSON.stringify(this.modelo),
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' }
+                }
+                fetch(this.url + "/" + this.peticion.ruta + "/modificar/" + this.modelo.id, options)
+                    .then(respuesta => {
                         window.location.href = "../administracion.html";
                 })
             }
@@ -95,7 +117,7 @@ createApp({
         this.peticion = JSON.parse(sessionStorage.getItem("peticion"));
         this.establecerAccion();
         this.establecerTabla();
-        alert(JSON.stringify(this.peticion))
+        this.establecerSeleccion();
 
     }
 }).mount("#app");

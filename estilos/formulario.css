@@ -59,10 +59,11 @@ div.formulario div.formulario-cuerpo div.principal div.contenido div.campos {
 }
 
 div.formulario div.formulario-cuerpo div.principal div.contenido div.campos input,select {
-    padding: 0.4ch 2ch;
+    padding: 0.6ch 2ch;
     display: flex;
     border: 1px solid #777;
     border-radius: 4px;
+
 
     &:focus {
         outline: none;
@@ -74,6 +75,7 @@ div.formulario div.formulario-cuerpo div.principal div.acciones {
     justify-content: end;
     gap: 1ch;
     padding: 0 1ch;
+    font-size: 1.12em;
 }
 
 div.formulario div.formulario-cuerpo div.principal div.acciones button {
@@ -96,9 +98,10 @@ div.formulario div.formulario-cuerpo div.lateral {
 
 div.formulario div.formulario-cuerpo div.lateral div.campo-imagen input {
     display: flex;
-    padding: 0.4ch 2ch;
+    padding: 0.6ch 2ch;
     border: 1px solid #777;
     border-radius: 4px;
+    font-size: 1.12em;
 }
 
 div.formulario div.formulario-cuerpo div.lateral div.imagen {

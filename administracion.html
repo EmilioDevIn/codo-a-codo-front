@@ -8,7 +8,7 @@
     <script
     src="https://kit.fontawesome.com/435941fa36.js" >
     crossorigin="anonymous"</script>
-  
+    <link rel="stylesheet" href="../estilos/style.css">
 </head>
 <body>
     <nav></nav>
@@ -31,16 +31,16 @@
                             Usuarios
                         </h2>
                         <h2 
-                            :class="['titulo', rutaActiva.sesiones]" 
-                            v-on:click="establecerRuta('sesiones')"
+                            :class="['titulo', rutaActiva.tipos]" 
+                            v-on:click="establecerRuta('tipos')"
                         >
-                            Sesiones
+                            Tipos de producto
                         </h2>
                     </div>
                     <button class="agregar" v-on:click = "crear()"><i class="fa-solid fa-plus"></i>Nuevo</button>
                 </div>
                 <div class="tabla-cuerpo">
-                    <div class="tabla-busqueda">
+<!--                     <div class="tabla-busqueda">
                         <select name="" id="">
                             <option value="id">id</option>
                             <option value="nombre">nombre</option>
@@ -48,15 +48,15 @@
                         </select>
                         <input type="text">
                         <button><i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
-                    </div>
+                    </div> -->
                     <div class="tabla-listado">
                         <template v-if = "cargando">
-                            ... owo ... 
+                            ... esta cargando espera un poquito a que se transladen los datos de la base de datos a esta instancia en el cliente de la aplicacion ... 
                         </template>
                         <template v-else>
                             <template v-if="rutaActiva.productos">
                                 <template v-for="producto in datos">
-                                    <div class="item"  v-if="!eliminados[producto.id]">
+                                    <div class="item">
                                         <div class="datos">
                                             <span class="imagen">
                                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
@@ -69,7 +69,7 @@
                                                         <span class="inventario"><strong>Inventario:</strong> {{producto.inventario}}</span>
                                                     </div>
                                                     <div class="opciones">
-                                                        <button><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                                                        <button v-on:click="modificar(producto)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
                                                         <button v-on:click = "eliminar(producto.id)"><i class="fa-solid fa-trash"></i>Eliminar</button>
                                                     </div>
                                                 </div>
@@ -93,8 +93,29 @@
                                                     <span class="esAdministrador"><strong>esAdministrador:</strong> {{usuario.esAdministrador}}</span>
                                                 </div>
                                                 <div class="opciones">
-                                                    <button><i class="fa-solid fa-pen-to-square"></i>Editar</button>
-                                                    <button><i class="fa-solid fa-trash"></i>Eliminar</button>
+                                                    <button v-on:click="modificar(usuario)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                                                    <button v-on:click="eliminar(usuario.id)"><i class="fa-solid fa-trash"></i>Eliminar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-if="rutaActiva.tipos">
+                                <div class="item" v-for="tipo in datos">
+                                    <div class="datos">
+                                        <span class="imagen">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s" alt="#">
+                                        </span>
+                                        <div class="columna">
+                                            <div class="fila">
+                                                <div class="datos-cortos">
+                                                    <span class="nombre"><strong>Nombre:</strong> {{tipo.nombre}}</span>
+                                                    <span class="clave"><strong>Id:</strong> {{tipo.id}}</span>
+                                                </div>
+                                                <div class="opciones">
+                                                    <button v-on:click="modificar(tipo)"><i class="fa-solid fa-pen-to-square"></i>Editar</button>
+                                                    <button v-on:click="eliminar(tipo.id)"><i class="fa-solid fa-trash"></i>Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,5 +142,6 @@
         <script type="module" src="./codigos/administracion.js"></script>
     
     </main>
+    <footer></footer>
 </body>
 </html>

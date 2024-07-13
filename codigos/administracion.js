@@ -13,7 +13,7 @@ createApp({
             rutaActiva: {
                 productos: "selected",
                 usuarios: "",
-                sesiones: ""
+                tipos: ""
             },
             eliminados: []
         };
@@ -22,7 +22,7 @@ createApp({
         establecerRutaActiva(ruta) {
             this.rutaActiva.productos = "";
             this.rutaActiva.usuarios = "";
-            this.rutaActiva.sesiones = "";
+            this.rutaActiva.tipos = "";
             this.rutaActiva[ruta] = "selected";
         },
         establecerRuta(ruta) {
@@ -48,7 +48,7 @@ createApp({
             return {
                 metodo: metodo,
                 ruta: this.ruta,
-                carga: ""
+                carga: carga
             }
         },
         crear() {
@@ -58,7 +58,7 @@ createApp({
         },
         modificar(datos) {
             const peticion = this.peticion("PUT", datos);
-            sessionStorage(setItem("peticion", JSON.stringify(peticion)));
+            sessionStorage.setItem("peticion", JSON.stringify(peticion));
             window.location.href = "./administracion/formulario.html";
         },
         eliminar(id) {
@@ -69,8 +69,13 @@ createApp({
             fetch(this.url + "/" + this.ruta + "/eliminar/" + id, options)
                 .then(respuesta => {
                     this.lectura();
-                    this.eliminados[id] = "none";
+                    return respuesta.json()
                 })
+                .then(datos => alert({
+                    productos: "producto",
+                    usuarios: "usuario",
+                    tipos: "tipo de producto"
+                } [this.ruta] + " eliminado: " + datos.nombre))
         },
     },
     created() {

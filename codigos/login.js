@@ -44,7 +44,7 @@ createApp({
             return {
                 nombre: this.nombre,
                 clave: this.clave,
-                esAdministrador: true,
+                esAdministrador: false,
                 imagen: "no-imagen"
             }
         },

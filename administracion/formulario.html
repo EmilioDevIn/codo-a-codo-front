@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../estilos/formulario.css">
+    <link rel="stylesheet" href="../estilos/style.css">
 </head>
 <body>
+    <nav></nav>
     <div class="formulario">
         <div class="formulario-encabezado">
             <h1>Formulario</h1>
@@ -15,9 +17,9 @@
             <div class="principal">
                 <div class="contenido">
                     <div class="subtitulo">
-                        <h2>{{accion}} un producto</h2>
+                        <h2>{{accion}} {{a}} {{seleccion}}</h2>
                     </div>
-                    <template v-if="peticion.ruta == 'productos'">
+                    <template v-if="peticion.ruta">
                         <div class="campos">
                             <input type="text" :placeholder="clave" v-for="(valor, clave) in modelo" v-model="modelo[clave]">
                         </div>
@@ -39,6 +41,8 @@
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../codigos/navegacionYPie.js"></script>
     <script type="module" src="../codigos/formulario.js"></script>
+    <footer></footer>
 </body>
 </html>

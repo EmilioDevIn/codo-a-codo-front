@@ -183,7 +183,7 @@ nav {
 .topnav .icon {
   display: none;
 }
-.fa-solid {
+nav .fa-solid {
   color: var(--color-primario);
   padding: 0 5px;
 }

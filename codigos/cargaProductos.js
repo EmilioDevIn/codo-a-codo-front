@@ -1,5 +1,3 @@
-
-
 // index.html
 createApp({
     data() {
@@ -46,7 +44,7 @@ createApp({
     created() {
         this.leer();
     }
-}).mount("#carrusel")
+}).mount("#carrusel");
 
 // paginas de productos
 createApp({
@@ -68,6 +66,10 @@ createApp({
                 "accesorios-perros.html": 4,
                 "alimentos-gatos.html": 7,
                 "alimentos-perros.html": 3,
+                "accesorios-gatos": 2,
+                "accesorios-perros": 4,
+                "alimentos-gatos": 7,
+                "alimentos-perros": 3,
             }[this.pagina];
         },
         leer() {

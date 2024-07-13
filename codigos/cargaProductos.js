@@ -76,7 +76,8 @@ createApp({
             this.filas = [[]];
             fetch(this.url + "/productos/leer")
                 .then(respuesta => respuesta.json())
-                .then(datos => {
+                .then(datos => {                    
+                    this.datos = datos.filter((dato) => dato.inventario > 0);
                     this.datos = datos.filter((dato) => dato.tipo_id == this.tipo);
                     this.datos.map((elemento, indice) => {
                         if((indice) % 4 == 0) {

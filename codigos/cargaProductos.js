@@ -120,7 +120,6 @@ createApp({
         this.establecerTipoId();
         this.leer();
         
-        console.log(this);
-        alert("revision");
+       
     }
 }).mount("#productos")

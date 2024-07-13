@@ -25,10 +25,10 @@ nav.innerHTML = `
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="../banios.html">Baños</a>
-                    <a href="../paseos.html">Paseos</a>
-                    <a href="../peluqueria.html">Peluquería</a>
-                    <a href="../veterinaria.html">Veterinaria</a>
+                    <a href="../servicios/banios.html">Baños</a>
+                    <a href="../servicios/paseos.html">Paseos</a>
+                    <a href="../servicios/peluqueria.html">Peluquería</a>
+                    <a href="../servicios/veterinaria.html">Veterinaria</a>
                 </div>
             </div>
             <template v-if="esAdministrador">

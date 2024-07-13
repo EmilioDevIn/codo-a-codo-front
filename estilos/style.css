@@ -384,6 +384,7 @@ nav .fa-solid {
   }
 }
 
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -707,4 +708,8 @@ nav .fa-solid {
 }
 .animal-image h2 {
   text-align: center;
+}
+
+header {
+  margin-top: 80px !important;
 }

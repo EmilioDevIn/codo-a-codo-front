@@ -34,16 +34,17 @@ createApp({
         lectura() {
             this.cargando = true;
             fetch(this.url + "/" + this.ruta + "/leer")
-            .then(respuesta => {
+                .then(respuesta => {
                     return respuesta.json()
                 })
                 .then(datos => {
                     this.cargando = false;
-                    
                     this.datos = datos;
-
-                    if(this.peticion.ruta == "productos")
-                        this.datos = this.reverse();        
+                    
+                    if(this.ruta == "productos") {
+                        this.datos = this.datos.reverse();        
+                        alert(JSON.stringify(this.datos))
+                    }
                 })
         },
         peticion(metodo, carga = "") {

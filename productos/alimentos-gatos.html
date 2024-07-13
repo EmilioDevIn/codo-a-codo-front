@@ -24,7 +24,7 @@
       <div id="productos">
         <div class="fila" v-for="fila in filas">
           <div class="tarjeta" v-for="producto in fila">
-              <img :src="producto.imagen" alt="${producto.nombre}" style="max-height: 180px">
+              <img :src="producto.imagen" alt="" style="max-height: 180px">
               <h3>{{producto.nombre}}</h3>
               <p>{{producto.precio}}</p>
               <p>{{producto.descripcion}}</p>

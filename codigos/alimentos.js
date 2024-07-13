@@ -292,16 +292,7 @@ const alimentos = {
   ],
 };
 
-function Producto() {
-  return {
-    nombre:
-    descripcion
-    precio
-    inventario: 12,
-    tipo_id,
-    imagen:
-  }
-}
+
 function inicializar(animal) {
   const contenido = document.getElementById("contenido-" + animal);
   if (contenido) {

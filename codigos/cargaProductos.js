@@ -65,7 +65,7 @@ createApp({
         establecerTipoId() {
             this.tipo = {
                 "accesorios-gatos.html": 2,
-                "acessorios-perros.html": 4,
+                "accesorios-perros.html": 4,
                 "alimentos-gatos.html": 7,
                 "alimentos-perros.html": 3,
             }[this.pagina];
@@ -84,13 +84,12 @@ createApp({
                         this.filas[this.contador].push(elemento);
                         
                     })
-                    alert(JSON.stringify(this.filas));
                 });
                     
         },
         reducirInventario(datos) {
             if(datos.inventario < 1) {
-                alert("Este producto ya no se puede comprar")
+                alert("Este producto ya no ser puede comprar")
             } else {
                 let tipo = sessionStorage.getItem("tipoUsuario");
                 if(tipo == "Cliente") {
